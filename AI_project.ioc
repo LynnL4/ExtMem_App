@@ -29,6 +29,7 @@ Dma.DCMI_PSSI.0.SyncSignalID=NONE
 Dma.Request0=DCMI_PSSI
 Dma.RequestsNb=1
 File.Version=6
+GPIO.groupedBy=Group By Peripherals
 I2C4.IPParameters=Timing
 I2C4.Timing=0x60404E72
 KeepUserPlacement=false

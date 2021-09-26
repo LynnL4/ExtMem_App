@@ -53,7 +53,7 @@ MEMORY
 /* Sections */
 SECTIONS
 {
-  /* The startup code into "EXT_FLASH" Rom type memory */
+  /* The startup code into "FLASH" Rom type memory */
   .isr_vector :
   {
     . = ALIGN(4);
@@ -61,7 +61,7 @@ SECTIONS
     . = ALIGN(4);
   } >FLASH
 
-  /* The program code and other data into "EXT_FLASH" Rom type memory */
+  /* The program code and other data into "FLASH" Rom type memory */
   .text :
   {
     . = ALIGN(4);
@@ -78,7 +78,7 @@ SECTIONS
     _etext = .;        /* define a global symbols at end of code */
   } >FLASH
 
-  /* Constant data into "EXT_FLASH" Rom type memory */
+  /* Constant data into "FLASH" Rom type memory */
   .rodata :
   {
     . = ALIGN(4);
@@ -128,7 +128,7 @@ SECTIONS
     KEEP (*(.fini_array*))
     PROVIDE_HIDDEN (__fini_array_end = .);
     . = ALIGN(4);
-  } >EXT_FLASH
+  } >FLASH
 
   /* Used by the startup to initialize data */
   _sidata = LOADADDR(.data);
@@ -174,7 +174,14 @@ SECTIONS
     . = . + _Min_Stack_Size;
     . = ALIGN(8);
   } >RAM_D1
+ _extram_start = ADDR(.bss.extram);
+  _extram_end = ADDR(.bss.extram) + SIZEOF(.bss.extram);
 
+  _dtcmram_start = ADDR(.bss.dtcmram);
+  _dtcmram_end = ADDR(.bss.dtcmram) + SIZEOF(.bss.dtcmram);
+
+  _itcmram_start = ADDR(.bss.itcmram);
+  _itcmram_end = ADDR(.bss.itcmram) + SIZEOF(.bss.itcmram);
   .bss.extram (NOLOAD) : {
 		*(.externalram)
 		. = ALIGN(4);

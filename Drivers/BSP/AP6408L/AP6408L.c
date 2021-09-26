@@ -542,11 +542,11 @@ void Psram_Set_DQS(enum DQS_Strength_e DQS_Strength)
 void Psram_Init(void)
 {
 	DLYB_OCTOSPI1_Calibration(1);
-	HAL_Delay(1);
+	HAL_Delay(5);
 	Psram_Reset();
-	HAL_Delay(1);
+	HAL_Delay(5);
 	Psram_Set_DQS(DQS_Half);
-	HAL_Delay(1);
+	HAL_Delay(5);
 	EnableMemMapped();
 }
 
